@@ -5,12 +5,15 @@ export const MyCustomComponent: FC<{
     lastName: string;
     firstName: string;
   };
-  birthDate: Date
-}> = ({ name , birthDate}) => {
+  birthDate: Date;
+  clickCallback: () => void;
+}> = ({ name, birthDate, clickCallback }) => {
   const [myNumber, setMyNumber] = useState<number | undefined>();
 
-  const clickHandler = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) =>
+  const clickHandler = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     console.log(e);
+    clickCallback();
+  };
   return (
     <div onClick={clickHandler}>
       MyCustomComponent with name {name.firstName}
